@@ -212,6 +212,15 @@ The first goal we should set for ourselves is giving the bot the ability to read
 Now that our Slackbot is able to listen to a channel, let's have it reply with a specific message when our SlackBot is called.
 1. Let's add some new functions to `start_bot.py`:
     1. ```python
+    
+        def get_bot_id(_slack_client):
+        """
+        Returns the ID of the SlackBot.
+        :param _slack_client: SlackClient instance
+        :return: String SlackBot's ID
+        """
+        return _slack_client.api_call("auth.test")["user_id"]
+   
        def was_bot_direct_mentioned(sc, slack_event):
            """
            Returns true if the message begins with <@{SLACKBOT_ID}>
